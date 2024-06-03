@@ -1,0 +1,28 @@
+---
+import SectionContainer from "@/components/SectionContainer.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import Badge from "@/components/badge.astro";
+import LinkedIn from "@/components/icons/linkedIn.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Desing System portfolio.dev"
+  description="El catalogo de componentes de nuestro portfolio"
+>
+  <SectionContainer class="py-44 pb-32 flex flex-col gap-10">
+    <article>
+      <h1 class="mb-4 text-xl font-semibold">&lt;Badge /&gt;</h1>
+
+      <Badge>Disponible para trabajar</Badge>
+    </article>
+    <article>
+        <h1 class="mb-4 text-xl font-semibold">&lt;Badge /&gt;</h1>
+      <div class="flex">
+      <SocialPill href="https://linkedin.com/in/larry-robles-0084bb294">
+        <LinkedIn class="size-4 md:size-6" />LinkedIn
+      </SocialPill>
+    </div>
+    </article>
+  </SectionContainer>
+</Layout>

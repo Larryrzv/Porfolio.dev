@@ -1,0 +1,114 @@
+---
+import Css from "./icons/Css.astro";
+import GitHub from "./icons/GitHub.astro";
+import WebIcon from "./icons/WebIcon.astro";
+import Html from "./icons/Html.astro";
+import JavaScript from "./icons/JavaScript.astro";
+import NodeJS from "./icons/NodeJS.astro";
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    class:
+      "relative bg-white text-black hover:border-2 border-orange-700 hover:scale-110 hover:bg-[#f9dacc] transition",
+    icon: Html,
+  },
+  CSS: {
+    name: "CSS",
+    class:
+      "relative bg-white text-black hover:border-2 border-blue-500 hover:scale-110 hover:bg-[#d1f0fd] transition",
+    icon: Css,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class:
+      "relative bg-black text-white hover:border-2 border-yellow-300 hover:scale-110 hover:bg-[#382e19] transition",
+    icon: JavaScript,
+  },
+  NODEJS: {
+    name: "NodeJS",
+    class:
+      "relative bg-black text-white hover:border-2 border-green-500 hover:scale-110 hover:bg-[#0b2002] transition",
+    icon: NodeJS,
+  },
+};
+
+const LINKS = {
+  GITHUB: {
+    text: "Mira el Codigo",
+    class:
+      "text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 hover:shadow-lg hover:shadow-purple-500/50 font-medium rounded-lg text-center me-2 mb-2 pr-5 py-2.5",
+  },
+  WEB: {
+    text: "Sitio Web",
+    class:
+      "transition-all duration-300 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 shadow-lg hover:shadow-blue-400/50 font-medium rounded-lg pr-5 py-2.5",
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Pagina de prueba: Electromoriz-web",
+    timeline: "Oct 2023 - Abr 2024 (7 meses)",
+    description:
+      "Una sencilla página estática que simula ser la página publicitaria de un técnico electromotriz",
+    image: "/projects/electromotriz.webp",
+    href: "https://cute-cajeta-c4b2fc.netlify.app/",
+    github: "https://github.com/Larryrzv/Electromotriz-web",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT],
+    links: [LINKS.WEB, LINKS.GITHUB],
+  },
+  {
+    title: "Aplicacion web: Card-Jitsu",
+    timeline: "Ago 2023 - Abr 2024 (9 meses)",
+    description:
+      "Proyecto de curso, pagina dinamica inspiradada en el juego de cartas Card Jitsu.",
+    image: "/projects/cardJitsu.webp",
+    href: "https://665d5de5ea270e971bc1474f--melodic-puppy-48b634.netlify.app/",
+    github: "https://github.com/Larryrzv/Card-Jitsu-Project",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.NODEJS],
+    links: [LINKS.WEB, LINKS.GITHUB],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image, timeline, links, href, github }) => (
+    <article class="mb-20 select-none">
+      <h3 class="text-2xl font-semibold text-yellow-200 mb-2 ">{title}</h3>
+      <p class="text-xs mb-2 text-slate-200 text-pretty">{timeline}</p>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex flex-row flex-wrap items-center mb-2 gap-2">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full items-center text-xs ${tag.class} py-1 px px-2`}
+            >
+              <tag.icon class="size-5" /> {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/10"
+        src={image}
+        alt={"Captura de pantalla del proyecto"}
+      />
+      <footer class="flex items-center mt-4 gap-5">
+          <span
+            class={`flex gap-x-2 rounded-full items-center text-lg py-1 px-2 transition-all duration-300 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 shadow-lg hover:shadow-blue-400/50 font-medium pr-5 `}
+          >
+            <WebIcon class="size-9" />
+            <a href={href}>Sitio Web</a>
+          </span>
+          <span
+            class={`flex gap-x-2 rounded-full items-center text-lg py-1 px-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 hover:shadow-lg hover:shadow-purple-500/50 font-medium text-center pr-5`}
+          >
+            <GitHub class="size-9" />
+          <a href={github}>Mira el Codigo</a>
+          </span>
+
+      </footer>
+    </article>
+  ))
+}

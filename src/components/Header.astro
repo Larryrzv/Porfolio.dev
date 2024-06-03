@@ -1,0 +1,29 @@
+---
+import { Astronav, StickyHeader, MenuItems } from "astro-navbar";
+---
+
+<StickyHeader
+  class="fixed select-none z-20 top-0 transition-all flex flex-row items-center justify-between w-full px-8"
+  scrollY={50}
+  defaultClass="border-transparent text-lg py-3"
+  activeClass="border-gray-200 backdrop-blur-lg text-sm"
+>
+  <Astronav>
+    <a href="/"
+      ><img
+        class="rounded-full size-12 sm:size-16 pointer-events-none"
+        src="https://avatars.githubusercontent.com/u/134145081?v=4"
+        alt="larryrzvFoto"
+      /></a
+    >
+
+    <MenuItems
+      class="flex flex-row items-center gap-x-10 opacity-90 max-md:gap-x-5 max-md:text-xs"
+    >
+      <a href="#top">Inicio</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre-mi">Sobre mi</a>
+    </MenuItems>
+  </Astronav>
+</StickyHeader>
