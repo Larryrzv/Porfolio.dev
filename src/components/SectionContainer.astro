@@ -1,5 +1,9 @@
 ---
 const { class: className, id } = Astro.props;
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id={id} class={`w-full lg:w-[740px] mx-auto py-28 ${className}`}>

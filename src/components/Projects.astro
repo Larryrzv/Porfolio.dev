@@ -6,6 +6,11 @@ import Html from "./icons/Html.astro";
 import JavaScript from "./icons/JavaScript.astro";
 import NodeJS from "./icons/NodeJS.astro";
 
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const TAGS = {
   HTML: {
     name: "HTML",
@@ -45,13 +50,11 @@ const LINKS = {
       "transition-all duration-300 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 shadow-lg hover:shadow-blue-400/50 font-medium rounded-lg pr-5 py-2.5",
   },
 };
-
 const PROJECTS = [
   {
-    title: "Pagina de prueba: Electromoriz-web",
-    timeline: "Oct 2023 - Abr 2024 (7 meses)",
-    description:
-      "Una sencilla página estática que simula ser la página publicitaria de un técnico electromotriz",
+    title: t("proj.title-1"),
+    timeline: t("proj.time-1"),
+    description: t("proj.descrip-1"),
     image: "/projects/electromotriz.webp",
     href: "https://cute-cajeta-c4b2fc.netlify.app/",
     github: "https://github.com/Larryrzv/Electromotriz-web",
@@ -59,10 +62,9 @@ const PROJECTS = [
     links: [LINKS.WEB, LINKS.GITHUB],
   },
   {
-    title: "Aplicacion web: Card-Jitsu",
-    timeline: "Ago 2023 - Abr 2024 (9 meses)",
-    description:
-      "Proyecto de curso, pagina dinamica inspiradada en el juego de cartas Card Jitsu.",
+    title: t("proj.title-2"),
+    timeline: t("proj.time-2"),
+    description: t("proj.descrip-2"),
     image: "/projects/cardJitsu.webp",
     href: "https://card-jitsu-larryrzv.netlify.app",
     github: "https://github.com/Larryrzv/Card-Jitsu-Project",
@@ -73,42 +75,43 @@ const PROJECTS = [
 ---
 
 {
-  PROJECTS.map(({ title, description, tags, image, timeline, links, href, github }) => (
-    <article class="mb-20 select-none">
-      <h3 class="text-2xl font-semibold text-yellow-200 mb-2 ">{title}</h3>
-      <p class="text-xs mb-2 text-slate-200 text-pretty">{timeline}</p>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex flex-row flex-wrap items-center mb-2 gap-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full items-center text-xs ${tag.class} py-1 px px-2`}
-            >
-              <tag.icon class="size-5" /> {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={image}
-        alt={"Captura de pantalla del proyecto"}
-      />
-      <footer class="flex items-center mt-4 gap-5">
+  PROJECTS.map(
+    ({ title, description, tags, image, timeline, href, github }) => (
+      <article class="mb-20 select-none">
+        <h3 class="text-2xl font-semibold text-yellow-200 mb-2 ">{title}</h3>
+        <p class="text-xs mb-2 text-slate-200 text-pretty">{timeline}</p>
+        <p class="text-lg mb-4 text-pretty">{description}</p>
+        <ul class="flex flex-row flex-wrap items-center mb-2 gap-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full items-center text-xs ${tag.class} py-1 px px-2`}
+              >
+                <tag.icon class="size-5" /> {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <img
+          class="rounded shadow-2xl shadow-white/10"
+          src={image}
+          alt={"Captura de pantalla del proyecto"}
+        />
+        <footer class="flex items-center mt-4 gap-5">
           <span
             class={`flex gap-x-2 rounded-full items-center text-lg py-1 px-2 transition-all duration-300 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 shadow-lg hover:shadow-blue-400/50 font-medium pr-5 `}
           >
             <WebIcon class="size-9" />
-            <a href={href}>Sitio Web</a>
+            <a href={href}>{t("proj.button-1")}</a>
           </span>
           <span
             class={`flex gap-x-2 rounded-full items-center text-lg py-1 px-2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 hover:shadow-lg hover:shadow-purple-500/50 font-medium text-center pr-5`}
           >
             <GitHub class="size-9" />
-          <a href={github}>Mira el Codigo</a>
+            <a href={github}>{t("proj.button-2")}</a>
           </span>
-
-      </footer>
-    </article>
-  ))
+        </footer>
+      </article>
+    )
+  )
 }

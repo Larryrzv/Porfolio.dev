@@ -1,3 +1,10 @@
+---
+import { useTranslations, getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <ol class="ms-5 select-none relative border-s border-gray-200 dark:border-gray-700">
   <li class="ms-9">
     <span
@@ -5,17 +12,17 @@
     >
     </span>
     <h3 class="mb-1 text-xl lgtext-2xl text-wrap max-w-[700]">
-      <span class="opacity-90">Asistente de Técnico en <span class="text-orange-300">Electrónica </span>e</span>
-      <span class="text-purple-400"> Informática</span>
+      <span class="opacity-90">{t("exp.span-1")}<span class="text-orange-300">{t("exp.span-2")}</span><span></span></span>
+      <span class="text-purple-400"> {t("exp.span-3")}</span>
     </h3>
     <time
       class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"
-      >2020-2021 (1 Año de Experiencia)</time
+      >{t("exp.time")}</time
     >
     <p class="text-base font-normal text-white text-balance">
-      Asistencia en reparación y exámenes básicos en <span class="text-orange-200">hardware</span> y <span class="text-purple-300">software</span>
-      (Smartphone, laptop, Computador, etc).
+      {t("exp.p-1")}<span class="text-orange-200">{t("exp.span-4")}</span><span class="text-purple-300">{t("exp.span-5")}</span>
+      <span class="text-base font-normal text-white text-balance">{t("exp.span-6")}</span>
     </p>
-    <p>Recepcionista y atención al cliente.</p>
+    <p>{t("exp.p-2")}</p>
   </li>
 </ol>

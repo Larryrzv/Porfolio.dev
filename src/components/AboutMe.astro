@@ -5,52 +5,54 @@ import LinkedInIcon from "../components/icons/linkedIn.astro";
 import GitHubIcon from "../components/icons/GitHub.astro";
 import GmailIcon from "../components/icons/Gmail.astro";
 import Outlook from "./icons/Outlook.astro";
+
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section class="flex gap-8 select-none justify-center items-center flex-col md:flex-row">
+<section
+  class="flex gap-8 select-none justify-center items-center flex-col md:flex-row"
+>
   <div
     class="[&>p]:mb-4 [&>p>strong]:text-amber-300 [&>p>strong]:font-semibold text-pretty order-2"
   >
     <p>
-      ¡Hola! Mi nombre es Larry Robles y soy un estudiante en la carrera de
-      Educación. Hace aproximadamente un año, descubrí mi pasión por la
-      programación y desde entonces, me he <strong
-        >convertido en un Programador Junior. Por ahora estoy enfocandome en el
-        desarrollo web tanto de paginas como de aplicaciones,</strong
-      > pero planeo en un futuro incursionarme en el desarrollo de videojuegos.
+      {t("about.p-1")}
+      <strong>{t("about.strong-1")}</strong>
+      {t("about.p-2")}
     </p>
 
     <p>
-      Durante mi entrada en el mundo de la programación web, he trabajado en
-      varios proyectos. Uno de los que más me enorgullece es una <strong
-        >aplicación web: una página dinámica donde puedes jugar contra la
-        computadora o incluso contra ¡¡una persona real!!.</strong
-      >
+      {t("about.p-3")}<strong>{t("about.strong-2")}</strong>
     </p>
 
     <p>
-      Aunque soy nuevo en este campo, no permitiré que el miedo me detenga. <strong
-      >
-        Estoy decidido a alcanzar mis metas y seguir progresando.</strong
-      >
+      {t("about.p-4")}<strong> {t("about.strong-3")}</strong>
     </p>
   </div>
-  <img src="/fotoMia2.webp" class="relative z-10 pointer-events-none rounded-full order-1 object-cover w-64 h-full p-1 lg:p-2 lg:w-64  bg-black/20 dark:bg-yellow-500/5" />
+  <img
+    src="/fotoMia2.webp"
+    class="relative z-10 pointer-events-none rounded-full order-1 object-cover w-64 h-full p-1 lg:p-2 lg:w-64 bg-black/20 dark:bg-yellow-500/5"
+  />
 </section>
-<section id="contacto" class="mt-6 select-none flex gap-4 justify-center items-start flex-col">
+<section
+  id="contacto"
+  class="mt-6 select-none flex gap-4 justify-center items-start flex-col"
+>
   <h2 class="text-4xl font-semibold flex gap-x-3 items-center">
     <Mailopen />
-    Contactame
+    {t("sect.cont-1")}
   </h2>
-  <div class="[&>p]:mb-2 [&>p>strong]:text-lime-400 font-medium text-lg text-pretty order-2">
+  <div
+    class="[&>p]:mb-2 [&>p>strong]:text-lime-400 font-medium text-lg text-pretty order-2"
+  >
     <p>
-      Si te ha parecido interesante mis <span class="text-pink-300">capacidades y perfil para algun trabajo,</span>
-      estaria <strong>encantado de poder hablar.</strong>
+      {t("about.p-5")}<span class="text-pink-300">{t("about.span-1")}</span>
+      {t("about.p-6")}<strong>{t("about.strong-4")}</strong>
     </p>
-    <p>
-      Aqui estan mis redes sociales y correos personales por los cuales puedes
-      <strong>contactarme.</strong>
-    </p>
+    <p>{t("about.p-7")}<strong>{t("about.strong-5")}</strong></p>
     <nav class="flex gap-2 mt-7 px-1 flex-wrap">
       <SocialPill href="https://linkedin.com/in/larry-robles-0084bb294">
         <LinkedInIcon class="size-6 md:size-8" />LinkedIn

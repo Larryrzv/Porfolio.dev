@@ -1,5 +1,10 @@
 ---
 const currentYear = new Date().getFullYear()
+
+import { useTranslations, getLangFromUrl } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class= "rounded-lg shadow m-4 bg-black/20 backdrop:blur-lg w-auto">
@@ -9,16 +14,16 @@ const currentYear = new Date().getFullYear()
     <span class="text-sm sm:text-center text-yellow-200/90"
       >© {currentYear} <a href="https://flowbite.com/" class="hover:underline"
         >Larryrzv</a
-      >. Algunos todos los derechos reservador
+      >. {t("footer.span-1")}
     </span>
     <ul
       class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
     >
       <li>
-        <a href="#proyectos" class="hover:underline me-4 md:me-6">proyectos</a>
+        <a href="#proyectos" class="hover:underline me-4 md:me-6">{t("nav.projects")}</a>
       </li>
       <li>
-        <a href="#top" class="hover:underline">inicio</a>
+        <a href="#top" class="hover:underline">{t("nav.home")}</a>
       </li>
     </ul>
   </div>

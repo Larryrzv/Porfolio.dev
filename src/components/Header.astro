@@ -1,29 +1,38 @@
 ---
 import { Astronav, StickyHeader, MenuItems } from "astro-navbar";
+import LanguagePicker from "./LanguagePicker.astro";
+
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <StickyHeader
-  class="fixed select-none z-20 top-0 transition-all flex flex-row items-center justify-between w-full px-8"
+  class="fixed select-none z-20 top-0 transition-all flex flex-row items-center justify-between w-full max-[425px]:pr-4 sm:px-8"
   scrollY={50}
   defaultClass="border-transparent text-lg py-3"
   activeClass="border-gray-200 backdrop-blur-lg text-sm"
 >
   <Astronav>
-    <a href="/"
-      ><img
-        class="rounded-full size-12 sm:size-16 pointer-events-none"
-        src="https://avatars.githubusercontent.com/u/134145081?v=4"
-        alt="larryrzvFoto"
-      /></a
-    >
+    <div class="flex items-center flex-row md:gap-4 pr-3 gap-3">
+      <a href="/"
+        ><img
+          class="rounded-full max-[425px]:size-0 size-12 md:size-16 pointer-events-none"
+          src="https://avatars.githubusercontent.com/u/134145081?v=4"
+          alt="larryrzvFoto"
+        /></a
+      >
+      <LanguagePicker />
+    </div>
 
     <MenuItems
-      class="flex flex-row items-center gap-x-10 opacity-90 max-md:gap-x-5 max-md:text-xs"
+      class="flex flex-row items-center gap-x-10 opacity-90 max-md:gap-x-5 max-[425px]:gap-x-4 sm:text-base text-xs"
     >
-      <a href="#top">Inicio</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#sobre-mi">Sobre mi</a>
+      <a href="#top">{t("nav.home")}</a>
+      <a href="#experiencia">{t("nav.experience")}</a>
+      <a href="#proyectos">{t("nav.projects")}</a>
+      <a href="#sobre-mi">{t("nav.about")}</a>
     </MenuItems>
   </Astronav>
 </StickyHeader>
